@@ -1,0 +1,19 @@
+/*Array7°. Дан массив размера N. 
+Вывести его элементы в обратном порядке.*/
+
+#include <stdio.h> 
+
+int main(){
+    int arr[100];
+    int n;
+    int num;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        scanf("%d", &num);
+        arr[i] = num;
+        }
+    for (int i = n; i > 0; i--) {
+        printf("%d ", arr[i]);}
+    
+    return 0;
+}

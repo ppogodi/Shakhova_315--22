@@ -1,0 +1,9 @@
+/*String1. Дан символ C. Вывести его код (т. е. номер в кодовой таблице).*/
+
+#include <stdio.h> 
+
+int main(){
+    char c = 'C'; 
+    printf("%d", c);
+    return 0;
+}
