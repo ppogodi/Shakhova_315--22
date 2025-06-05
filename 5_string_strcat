@@ -1,0 +1,24 @@
+/*5.Дописать вторую строку в конец первой*/
+
+#include<stdio.h>
+#include<string.h>
+#define MAXLEN 100
+
+int main(){
+    char str1[MAXLEN];
+    char str2[MAXLEN];
+    fgets(str1, MAXLEN, stdin);
+    
+    size_t len = strlen(str1);
+    if (len > 0 && str1[len - 1] == '\n') {
+        str1[len - 1] = '\0';
+        len--;
+    }
+    
+    fgets(str2, MAXLEN, stdin);
+    strcat(str1, str2);
+    
+    printf("%s", str1);
+        
+    return 0;
+    }
