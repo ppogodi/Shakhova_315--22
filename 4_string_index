@@ -1,0 +1,32 @@
+/*4.Индекс первого вхождения символа в строку*/
+
+#include<stdio.h>
+#include<string.h>
+#define MAXLEN 100
+
+int main(){
+    char str[MAXLEN];
+    char *ptr;
+    char c;
+    scanf("%c", &c);
+    getchar();
+    fgets(str, MAXLEN, stdin);
+    
+    size_t len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n') {
+            str[len - 1] = '\0';
+            len--;
+        }
+    
+    ptr = strchr(str, c);
+    
+    if (ptr != NULL){
+        int ind = int(ptr - str);
+        printf("%d", ind);
+    }
+    else {
+        printf("null");
+        }
+        
+    return 0;
+    }
