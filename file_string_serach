@@ -1,0 +1,44 @@
+/*Поиск и замена
+Заменить все вхождения заданного слова в тексте файла на другое слово.
+*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+#define MAXLEN 256
+
+int main() {
+    char buffer[MAXLEN][MAXLEN];
+    int count = 0;
+    char word_one[MAXLEN];
+    char word_two[MAXLEN];
+
+    const char* input_file = "input.txt";
+    const char* output_file = "output.txt";
+
+    FILE* fp_in = fopen(input_file, "r");
+    FILE* fp_out = fopen(output_file, "w");
+
+    fgets(word_one, MAXLEN, stdin);
+    word_one[strcspn(word_one, "\n")] = 0;
+
+    fgets(word_two, MAXLEN, stdin);
+    word_two[strcspn(word_two, "\n")] = 0;
+
+    while (fscanf(fp_in, "%s", buffer[count]) != EOF) {
+        count++;
+        }
+
+    for (int i = 0; i < count; i++) {
+        if (strcmp(buffer[i], word_one) == 0) {
+            strcpy(buffer[i], word_two);
+        }
+        fprintf(fp_out, "%s\n", buffer[i]);
+    }
+
+    fclose(fp_in);
+    fclose(fp_out);
+
+    return 0;
+}
