@@ -1,0 +1,28 @@
+/*Подсчёт количества строк
+Посчитать количество строк в заданном текстовом файле.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+#define MAXLEN 256
+
+int main() {
+    char buffer[MAXLEN];
+    int count = 0;
+    const char* input_file = "input.txt";
+    const char* output_file = "output.txt";
+    FILE* fp_in = fopen(input_file, "r");
+    FILE* fp_out = fopen(output_file, "w");
+
+    while (fgets(buffer, MAXLEN, fp_in) != NULL) {
+        count++;
+        }
+
+    fprintf(fp_out, "%d", count);
+
+    fclose(fp_in);
+    fclose(fp_out);
+
+    return 0;
+}
