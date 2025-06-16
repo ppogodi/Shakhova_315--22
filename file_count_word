@@ -1,0 +1,67 @@
+/*Открывает текстовый файл input.txt для чтения.
+Считывает содержимое файла построчно.
+Для каждой строки:
+Подсчитывает количество слов (слово — последовательность символов, разделённая пробелами или другими пробельными символами).
+Подсчитывает количество символов (без учёта символа новой строки).
+Записывает результаты в другой файл output.txt в формате:
+Строка 1: слов = X, символов = Y
+Строка 2: слов = X, символов = Y
+...
+После обработки всех строк выводит в консоль общее количество строк, общее количество слов и общее количество символов.*/
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAXLEN 100
+
+int count_words(char* buff);
+int line_length(char* buff);
+
+int main(){
+    char c;
+    char buffer[256];
+    char * filename = "input.txt";
+    int sum_words = 0;
+    int sum_lines = 0;
+    int sum_len = 0;
+    
+    FILE * fp = fopen(filename, "r");
+    if(fp)
+    while((fgets(buffer, 256, fp)) != NULL)
+    {   
+        printf("%s", buffer);
+        sum_len += line_length(buffer);
+        sum_words += count_words(buffer);
+        sum_lines++;
+        
+    }
+    
+    fclose(fp);
+        
+    return 0;
+    }
+    
+    
+int line_length(char* buff){
+    size_t len = strlen(buff);
+    if (len > 0 && buff[len - 1] == '\n') {
+        buff[len - 1] = '\0';
+    }
+    return len;
+}    
+    
+int count_words(char* buff){
+        int inWord = 0;
+        int count = 0;
+        
+        for (int i = 0; buff[i] != '\0'; i++) {
+            if (isspace(buff[i])) {
+                inWord = 0;
+            } else if(inWord == 0) {
+                inWord = 1;
+                count++;
+            }
+        }
+        return count;
+    }
+    
