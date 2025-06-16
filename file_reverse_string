@@ -1,0 +1,31 @@
+/*Обратный вывод
+Вывести строки файла в обратном порядке.
+*/
+
+//#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+#define MAXLEN 256
+
+int main() {
+    char buffer[MAXLEN][MAXLEN];
+    int count = 0;
+    const char* input_file = "input.txt";
+    const char* output_file = "output.txt";
+    FILE* fp_in = fopen(input_file, "r");
+    FILE* fp_out = fopen(output_file, "w");
+
+    while (fgets(buffer[count], MAXLEN, fp_in) != NULL) {
+        count++;
+        }
+
+    for (int i = count - 1; i >= 0; i--) {
+        fprintf(fp_out, "%s", buffer[i]);
+    }
+
+    fclose(fp_in);
+    fclose(fp_out);
+
+    return 0;
+}
