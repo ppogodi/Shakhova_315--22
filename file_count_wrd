@@ -1,0 +1,41 @@
+/*Подсчёт частоты слов
+Подсчитать, сколько раз слово встречается в текстовом файле.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+#define MAXLEN 256
+
+int main() {
+	char buffer[MAXLEN][MAXLEN];
+	const char* in_file = "input.txt";
+	const char* out_file = "output.txt";
+
+	FILE* fp_in = fopen(in_file, "r");
+	FILE* fp_out = fopen(out_file, "w");
+
+	int count_word = 0;
+	int n = 0;
+	char word[MAXLEN] = {};
+
+	fgets(word, MAXLEN, stdin);
+	word[strcspn(word, "\n")] = '\0';
+
+	while (fscanf(fp_in, "%s", buffer[n]) == 1) {
+		n++;
+	}
+	
+	for (int i = 0; i < n; i++) {
+		if (strcmp(buffer[i], word) == 0) {
+			count_word++;
+		}
+	}
+
+	fprintf(fp_out, "%d\n", count_word);
+
+	fclose(fp_in);
+	fclose(fp_out);
+
+	return 0;
+}
