@@ -1,0 +1,40 @@
+/*Задача 1. Обратный порядок слов в строке
+Дана строка с несколькими словами, разделёнными пробелами. 
+Напишите программу, которая меняет порядок слов на обратный.
+
+Пример:
+Вход: "Hello world from C"
+Выход: "C from world Hello"*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+#define MAXLEN 256
+
+int main() {
+	char str[MAXLEN];
+	char* words[MAXLEN];
+	int count = 0;
+
+	fgets(str, MAXLEN, stdin);
+
+	size_t len = strlen(str);
+	if (len > 0 && str[len - 1] == '\n') {
+		str[len - 1] = '\0';
+	}
+
+	char* token = strtok(str, " ");
+
+	while (token != NULL) {
+		words[count++] = token;
+		token = strtok(NULL, " ");
+	}
+
+	for (int i = count - 1; i >= 0; i--) {
+		printf("%s ", words[i]);
+	}
+	
+
+	return 0;
+}
